@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useBlogContext } from '@/context/Context';
 import axios from 'axios';
 import { API_URL, PAGE_LMIT } from '@/utils/constant';
+import { bgImage } from '@/assets';
 
 
 export default function Home() {
@@ -15,16 +16,6 @@ export default function Home() {
   const [inputPage, setInputPage] = useState('');
 
   const { article, setArticle } = useBlogContext();
-
-
-  const handlePageSubmit = () => {
-    e.preventDefault();
-    const pageNumber = parseInt(inputPage);
-    if (!isNaN(pageNumber) && pageNumber >= 1 && pageNumber <= totalPages) {
-      setCurrentPage(pageNumber);
-      setInputPage('');
-    }
-  };
 
   const getPageNumbers = () => {
     const pages = [];
@@ -83,13 +74,11 @@ export default function Home() {
       getArticles();
     }
   }, [currentPage])
-
   return (
     <main>
-      {/* Header/Hero Section */}
-
       {!article ? (
-        <div className="relative w-full h-[500px] bg-[url('/bg.jfif')] bg-cover bg-center">
+        <div className="relative w-full h-[500px] bg-cover bg-center"
+          style={{ backgroundImage: `url(${bgImage.src})` }}>
           <div className="absolute inset-0 bg-black/70 flex items-center justify-center">
             <div className="text-center text-white">
               <h1 className="text-5xl font-bold mb-4">News</h1>
