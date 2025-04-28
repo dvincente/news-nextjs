@@ -115,7 +115,7 @@ export default function Home() {
                 <div className='flex flex-col md:flex-row gap-4'>
                   <img src={atcl.image_url} className='w-48 h-48 mx-auto' />
                   <div className="block">
-                    <div className='text-black hover:text-[#0085A1] cursor-pointer' onClick={() => { setArticle(atcl) }}>
+                    <div className='text-black hover:text-[#0085A1] cursor-pointer' onClick={() => { setArticle(atcl); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>
                       <h2 className="text-4xl font-bold transition-colors mb-2">
                         {atcl.title}
                       </h2>
