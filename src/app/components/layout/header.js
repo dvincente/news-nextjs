@@ -20,10 +20,10 @@ export default function Header() {
                             </Link>
                         </div>
 
-                        <Link href="/about" className="hover:text-gray-600 transition-colors">
+                        <Link href="/" className="hover:text-gray-600 transition-colors">
                             About
                         </Link>
-                        <Link href="/contact" className="hover:text-gray-600 transition-colors">
+                        <Link href="/" className="hover:text-gray-600 transition-colors">
                             Contact
                         </Link>
                     </div>

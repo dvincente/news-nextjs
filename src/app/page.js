@@ -77,8 +77,7 @@ export default function Home() {
   return (
     <main>
       {!article ? (
-        <div className="relative w-full h-[500px] bg-cover bg-center"
-          style={{ backgroundImage: `url(${bgImage.src})` }}>
+        <div className="relative w-full h-[500px] bg-cover bg-center bg-[url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05')]">
           <div className="absolute inset-0 bg-black/70 flex items-center justify-center">
             <div className="text-center text-white">
               <h1 className="text-5xl font-bold mb-4">News</h1>
@@ -96,7 +95,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-      )}
+      )
+      }
 
       {/* Blog Posts */}
       <div className="container mx-auto px-4 py-12 max-w-4xl">
