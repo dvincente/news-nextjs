@@ -99,7 +99,9 @@ export default function Home() {
                     <a href={atcl.url} target='_blank' rel='noopener noreferrer'>{atcl.title}</a>
                   </h2>
                 </div>
-                <div className="text-lg">{atcl.body}</div>
+                <div className="text-lg">{atcl.body.length > 255
+                  ? `${atcl.body.slice(0, 200).split(' ').slice(0, -1).join(' ')}...`
+                  : atcl.body}</div>
                 <div className="text-gray-500 py-2">{new Date(atcl.published_on * 1000).toDateString()}</div>
                 <div className='flex flex-row flex-wrap gap-2 text-blue-600'>
                   {atcl.category?.split('|').map((cat, index) => (
