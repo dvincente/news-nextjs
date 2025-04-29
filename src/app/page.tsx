@@ -74,6 +74,7 @@ export default function Home() {
   useEffect(() => {
     if (currentPage > 0) {
       getArticles();
+      window.scrollTo({ top: 0, behavior: 'smooth' }); // 👈 Scrolls to top smoothly
     }
   }, [currentPage]);
 
