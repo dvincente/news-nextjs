@@ -1,5 +1,4 @@
 import "./globals.css";
-import BProvider from "./provider";
 import Header from "./components/layout/header";
 
 export const metadata = {
@@ -11,7 +10,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <BProvider>
           <Header/>
           {children}
           <footer className="bg-white py-12 mt-12">
@@ -31,7 +29,7 @@ export default function RootLayout({ children }) {
                 Copyright © Your Website 2023
               </p>
             </div>
-          </footer> </BProvider>
+          </footer> 
       </body>
     </html>
   );
