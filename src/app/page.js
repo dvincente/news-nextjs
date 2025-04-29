@@ -100,7 +100,7 @@ export default function Home() {
                 </div>
                 <div className='flex flex-row flex-wrap gap-2 text-blue-600'>
                   {atcl.category?.split('|').map((cat, index) => (
-                    <div key={index} className='bg-blue-100 rounded-xl px-4 py-1'>
+                    <div key={index} className='bg-blue-100 rounded-xl px-4 py-1 text-sm'>
                       {cat}
                     </div>
                   ))}
