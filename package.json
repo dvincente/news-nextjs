@@ -1,5 +1,5 @@
 {
-  "name": "blogs",
+  "name": "news",
   "version": "0.1.0",
   "private": true,
   "main": "main/main.js",
@@ -13,7 +13,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "axios": "^1.8.4",
+    "axios": "^1.9.0",
+    "concurrently": "^9.1.2",
     "electron-serve": "^2.1.1",
     "next": "15.3.1",
     "react": "^19.0.0",
@@ -21,10 +22,13 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "concurrently": "^9.1.2",
-    "electron": "^35.2.0",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "electron": "^36.0.0",
     "electron-builder": "^26.0.12",
-    "tailwindcss": "^4"
+    "tailwindcss": "^4",
+    "typescript": "^5"
   },
   "build": {
     "appId": "news.io",
