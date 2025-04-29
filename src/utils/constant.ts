@@ -1,3 +1,3 @@
-export const PAGE_LMIT = 10;
+export const PAGE_LMIT = 5;
 
-export const API_URL = 'http://localhost:8085';
+export const TOTAL_PAGES = 20;
