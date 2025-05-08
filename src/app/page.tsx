@@ -99,10 +99,10 @@ export default function Home() {
               pageCount={pageCount}
               previousLabel="< previous"
               containerClassName="flex items-center space-x-2"
-              pageClassName="px-3 py-1 border border-gray-300 rounded"
+              pageClassName="px-3 py-1 border border-gray-300 rounded cursor-pointer"
               activeClassName="bg-gray-800 text-white"
-              previousClassName="px-3 py-1 border border-gray-300 rounded"
-              nextClassName="px-3 py-1 border border-gray-300 rounded"
+              previousClassName="px-3 py-1 border border-gray-300 rounded cursor-pointer"
+              nextClassName="px-3 py-1 border border-gray-300 rounded cursor-pointer"
               disabledClassName="opacity-50 cursor-not-allowed"
             />
           </div>
