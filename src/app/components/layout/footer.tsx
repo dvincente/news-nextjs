@@ -17,7 +17,7 @@ export default function Footer() {
                     </a>
                 </div>
                 <p className="text-gray-600">
-                    Copyright © News 2025
+                    Copyright © Business News 2025
                 </p>
             </div>
         </footer>

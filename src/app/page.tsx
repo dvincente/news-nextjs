@@ -4,18 +4,23 @@ import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 
 import { PAGE_LMIT } from '@/utils/constant';
+import moment from 'moment';
+import _ from 'lodash';
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [totalArticles, setTotalArticles] = useState<any[]>([]);
   const [articles, setArticles] = useState<any[]>([]);
 
+  const convertTime = (timestamp: string) => moment.unix(Number(timestamp)).local().format('YYYY-MM-DD HH:mm:ss');
+  const splitCategory = (category: string) => _.split(category, '|');
+
   const getArticles = async () => {
     try {
       const res = await fetch('/api/news');
       const data = await res.json();
 
-      setTotalArticles(data.Data || []);
+      setTotalArticles(data || []);
     } catch (e) {
       console.error('Error in get articles', e);
     }
@@ -43,7 +48,7 @@ export default function Home() {
       <div className="relative w-full h-[500px] bg-cover bg-center bg-[url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05')]">
         <div className="absolute inset-0 bg-black/70 flex items-center justify-center">
           <div className="text-center text-white">
-            <h1 className="text-5xl font-bold mb-4">News</h1>
+            <h1 className="text-5xl font-bold mb-4">Welcome to Business News</h1>
           </div>
         </div>
       </div>
@@ -52,27 +57,31 @@ export default function Home() {
         {articles.map((atcl, index) => (
           <article key={index} className={`mb-12 ${index !== articles.length - 1 ? 'pb-12 border-b border-gray-200' : ''}`}>
             <div className='flex flex-col md:flex-row gap-4'>
-              <img src={atcl.IMAGE_URL} className='w-full md:w-64 md:h-64 mx-auto' alt="news" />
+              <img src={atcl.image_url} className='w-full md:w-64 md:h-64 mx-auto' alt="news" />
               <div className="block">
                 <div className='text-black hover:text-[#0085A1] cursor-pointer'>
                   <h2 className="text-4xl font-bold transition-colors mb-2">
-                    <a href={atcl.URL} target='_blank' rel='noopener noreferrer'>{atcl.TITLE}</a>
+                    <a href={atcl.url} target='_blank' rel='noopener noreferrer'>{atcl.title}</a>
                   </h2>
                 </div>
                 <div className="text-lg">
-                  {atcl.BODY.length > 255
-                    ? `${atcl.BODY.slice(0, 200).split(' ').slice(0, -1).join(' ')}...`
-                    : atcl.BODY}
+                  {atcl.body.length > 255
+                    ? `${atcl.body.slice(0, 200).split(' ').slice(0, -1).join(' ')}...`
+                    : atcl.body}
                 </div>
                 <div className="text-gray-500 py-2">
-                  {new Date(atcl.PUBLISHED_ON* 1000).toDateString()}
+                  {convertTime(atcl.published_on)}
                 </div>
                 <div className='flex flex-row flex-wrap gap-2 text-blue-600'>
-                  {atcl.CATEGORY_DATA.map((cat: any, idx: number) => (
-                    <div key={idx} className='bg-blue-100 rounded-xl px-4 py-1 text-sm'>
-                      {cat.CATEGORY}
-                    </div>
-                  ))}
+                  {
+                    splitCategory(atcl.category).map((item, index) => {
+                      return (
+                        <div key={index} className='bg-blue-100 rounded-xl px-4 py-1 text-sm'>
+                          {item}
+                        </div>
+                      );
+                    })
+                  }
                 </div>
               </div>
             </div>

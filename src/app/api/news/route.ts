@@ -1,23 +1,17 @@
 import { NextResponse } from 'next/server';
-import axios from 'axios';
+import client, { News } from 'chainecho-api';
 
 export async function GET() {
+  const CHAINECHO_API_KEY = '6iWil6rWrWOOjpu0SpOfFEc9PuUpj8rE';
+  client.setToken(CHAINECHO_API_KEY);
+
   try {
-    const response = await axios.get(
-      `https://data-api.coindesk.com/news/v1/article/list`,
-      {
-        params: {
-          lang: 'EN',
-          limit: 100,
-          api_key: process.env.apikey, // Make sure it's in your .env.local
-        },
-      }
-    );
-    return NextResponse.json(response.data);
+    const news: News[] = await client.getLatestNews(50);
+    return NextResponse.json(news);
   } catch (error: any) {
     console.error('Error fetching data:', error.message);
     return NextResponse.json(
-      { error: 'Failed to fetch data from Coindesk' },
+      { error: 'Failed to fetch data from ChainEcho API' },
       { status: 500 }
     );
   }
